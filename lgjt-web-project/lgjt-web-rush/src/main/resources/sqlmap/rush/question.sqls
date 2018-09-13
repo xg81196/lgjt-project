@@ -1,0 +1,31 @@
+/*ques.question.list*/
+select qq.*,qd.`name` as difficultyName ,sat.source_name as source_name  from ques_questions qq
+left join ques_diff qd on qq.difficulty_id=qd.id
+left join sys_attachment sat on qq.attachment_id=sat.id
+$condition
+
+/*查询试题，包含附件id*/
+/*ques.question.list.attachment*/
+select qq.*,qd.`name` as difficultyName  from ques_questions qq
+left join ques_diff qd on qq.difficulty_id=qd.id
+$condition
+
+/*ques.question.listForDownload*/
+select qq.*,qd.`name` as difficultyName ,qc.`name` AS classifyName from ques_questions qq 
+LEFT JOIN ques_diff qd ON qq.difficulty_id = qd.id
+LEFT JOIN ques_classify  qc ON qq.classify_id =qc.id
+$condition
+
+/*ques.question.querywithcnd*/
+SELECT qcol.id,qcol.question, qcla.name AS "classify_name", qcol.type,qcol.verify,qcol.crt_time,qcol.upload_user_name
+FROM ques_collect qcol
+LEFT JOIN ques_classify qcla
+ON qcla.id = qcol.classify_id
+$condition
+
+/*根据题干类型去重*/
+/*ques.question.destinct*/
+select DISTINCT(type) from ques_questions
+$condition
+
+

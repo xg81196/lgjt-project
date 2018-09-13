@@ -1,0 +1,33 @@
+/* 查询我的申报 */
+/*lgjt.service.help.queryMydeclare*/
+select h.id_no,h.rel_name,h.crt_user, h.type,h.crt_time,StateNow
+from  WW_Wennuan w ,ERPWorkToDo e,lg_help_info h
+where w.App_ID=e.App_ID and wn_sfz in (SELECT id_no FROM lg_help_info  WHERE crt_user=@userName)
+
+
+
+/*查询所有申报信息*/
+/*lgjt.service.help.queryInfo*/
+SELECT * FROM  lg_help_info
+
+
+
+/*查询代办事项数量*/
+/*lgjt.service.help.queryMyToDo*/
+SELECT e.FormName ,e.StateNow, admin.RealName,e.LateTime
+FROM  ERPWorkToDo e, KS_Admin admin
+WHERE admin.UserName in(SELECT UserName  FROM ERPWorkToDo WHERE
+ShenPiRenList LIKE @name)
+and TimeStr BETWEEN @startTime AND @endTime
+
+
+
+/*查询申报信息2*/
+/*lgjt.service.help.queryMyShengBao*/
+select h.id_no,h.rel_name,h.crt_user, h.type,h.crt_time,'StateNow' as StateNow
+from  WW_Wennuan w ,lg_help_info h
+where wn_sfz in (SELECT id_no FROM lg_help_info  WHERE crt_user=@name)
+
+/*查询附加最大ID*/
+/*lgjt.service.help.queryMaxUploadId*/
+SELECT MAX(ID) as id  FROM KS_UploadFiles

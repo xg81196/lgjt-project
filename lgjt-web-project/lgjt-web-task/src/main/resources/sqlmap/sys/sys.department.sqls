@@ -1,0 +1,3 @@
+/*查询所有的部门*/
+/*sys.sysdepartment.querypage.all*/
+select * from sys_department

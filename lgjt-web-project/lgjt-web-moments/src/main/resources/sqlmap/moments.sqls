@@ -1,0 +1,65 @@
+
+
+/*班组排行*/
+/*app.rank.group*/
+SELECT * FROM ( SELECT *, @@rank := @@rank + 1 AS rank FROM ( SELECT a.org_id, a.group_name, a.org_name, sum( a.score ) AS score FROM (
+SELECT lsu.org_id, luls.score, lg.group_name, lso.name as org_name FROM lg_user_level_score luls LEFT JOIN lg_sys_user lsu ON lsu.NAME = luls.user_name
+LEFT JOIN lg_group lg ON lg.id = lsu.group_id
+LEFT JOIN lg_sys_organization lso ON lso.id = lsu.org_id where luls.type = 1) a
+GROUP BY a.group_name ORDER BY score DESC ) ff, ( SELECT @@rank := 0 ) b ) a $condition LIMIT @page,@pageSize
+
+
+/*后台的班圈积分记录*/
+/*admin.message.record*/
+select lgm.group_name, lgm.real_name, lgm.verify_user, lgm.verify_status, lgm.crt_user, luls.score, lgm.crt_time, lgm.verify_status lg from lg_user_level_score luls RIGHT JOIN lg_group_message lgm on lgm.id = luls.message_id
+$condition
+
+/*前台获取SQLSERVER*/
+/*get.score.sum.sql*/
+select t.DepID as org_id, t.DepName as org_name, t.TeamName as group_name, t.Count as score from dbo.ScoreSum(@beginTime, @endTime) t where t.id <= 10
+
+/*前台获取MY_SQL*/
+/*get.score.sum.mysql*/
+select * from (
+select SUM(t.score) as score, t.group_id, t.org_id, t.group_name
+from lg_user_level_score t GROUP BY t.group_id, t.org_id, t.group_name
+) a ORDER BY a.score desc LIMIT 0, 10
+
+
+/*获取用户发起题材数量*/
+/*get.crtCount.user*/
+select count(1) as count from lg_challenge $condition
+
+
+/*获取用户挑战的数量*/
+/*get.challengeCount.user*/
+select count(1) as count from lg_challenge_pk $condition
+
+
+/*获取点赞数量*/
+/*get.like.count*/
+select count(1) as count from lg_user_like $condition
+
+/*获取一条跟拍的发起者和跟拍者排行用*/
+/*get.challengeInfo.rank*/
+select base.* from (
+SELECT X.*,@@rank := @@rank + 1 rank FROM (
+select a1.*,
+(select count(1) FROM lg_user_like lul WHERE lul.message_id = a1.id) as likeCount
+from
+(SELECT id, group_name, real_name, extend1, extend2, user_id FROM lg_challenge where id = @challengeId
+UNION ALL
+SELECT id, group_name, real_name, extend1, extend2, user_id FROM lg_challenge_pk lcp WHERE lcp.super_id = @challengeId ) a1
+ORDER BY likeCount DESC
+) X,
+( SELECT @@rank := 0 ) AS r) base $condition LIMIT @page,@pageSize
+
+/*后天管理的竞技跟拍管理*/
+/*admin.manageList*/
+select ax.* from(
+select a1.*,
+(select count(1) FROM lg_user_like lul WHERE lul.message_id = a1.id) as likeCount
+from
+(SELECT id, group_name, real_name, user_id, crt_time, is_disable, status, '0' as type, content, group_id FROM lg_challenge
+UNION ALL
+SELECT id, group_name, real_name, user_id, crt_time, is_disable, status, '1' as type, content, group_id FROM lg_challenge_pk lcp) a1) ax

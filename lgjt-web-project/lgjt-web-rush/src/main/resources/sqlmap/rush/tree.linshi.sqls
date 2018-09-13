@@ -1,0 +1,3 @@
+/*tree.linshi.list*/
+SELECT COUNT(1) ques_num FROM ques_questions
+$condition

@@ -1,0 +1,14 @@
+/* 按照类型查询消息 */
+/* lgjt.web.notice.queryNoticeForType */
+SELECT m.* FROM  lg_notice_message m ,lg_notice_receive r
+$condition
+and
+m.id=r.message_id
+
+
+/*查询所有消息*/
+/*lgjt.web.notice.queryAllNotice*/
+SELECT m.* FROM  lg_notice_message m ,lg_notice_receive r
+$condition
+and
+m.id=r.message_id

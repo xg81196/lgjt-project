@@ -1,0 +1,10 @@
+/* 查询当前角色对应哪些用户 */
+/*sys.sysrole.queryRoleUser*/
+select ui.*,(select role_name from sys_role r where r.id= ui.extend4) as role_name  from sys_user_admin ui left join sys_user_role urm on ui.id=urm.admin_user_id $condition
+/* 查询当前用户所属角色 */
+/*sys.sysrole.queryUserRole*/
+select r.role_name,r.status from sys_role r join sys_user_role su  on r.id=su.role_id and su.admin_user_id=@userId $condition
+/*sys.role.queryMenuTree*/
+select DISTINCT sm.* from sys_menu sm left join sys_role_menu srm on srm.menu_id=sm.id join sys_user_role sur
+on srm.role_id=sur.role_id
+ $condition

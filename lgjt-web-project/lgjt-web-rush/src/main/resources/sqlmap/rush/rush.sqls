@@ -1,0 +1,80 @@
+/*通过工种名称查询工种管理*/
+/*rush.admin.sequence.queryPageByName*/
+select rs.*, rsc.`tests_type`, qc.`name` as classify_name, rsc.`difficulty` from `rush_sequence` rs
+left join `rush_sequence_classify` rsc on rsc.`sequence_id` = rs.`id`
+left join `ques_classify` qc on qc.id = rsc.classify_id
+$condition
+
+/*通过三种查询条件查询闯关记录*/
+/*rush.admin.sequence.record.queryPageBySearch*/
+select rsr.*, rs.name from `rush_sequence_record` rsr
+left join rush_sequence rs on rs.id = rsr.`sequence_id`
+$condition
+
+/*闯关积分排行榜*/
+/*rush.admin.rush.level.score.rank*/
+SELECT user_name,company_name,real_name,score as score_count ,rank FROM ( SELECT user_name,company_name,real_name,score ,@@rank :=@@rank + 1 AS rank
+ FROM ( SELECT user_name,company_name,real_name,sum(score) as score FROM rush_level_score group by user_name, company_name, real_name ORDER BY score DESC) ff,(SELECT @@rank := 0) b
+	) a $condition LIMIT @page,@pageSize
+
+
+/*查询全部排行  英雄榜*/
+/*rush.rush.getAllRank*/
+select * from (select  @@rank:=@@rank+1 rank,
+               t.* from (SELECT @@rank:=0) as r,
+               ( SELECT  rls.sequence_name,rls.user_name, rls.real_name, rls.score, rls.sequence_id
+                from rush_level_score as rls
+                ) as t
+               $condition order by t.score desc) x LIMIT @page,@pageSize
+
+/*查询全部的排行total  英雄榜*/
+/*rush.rush.getAllRank.total*/
+select count(1) as total from (SELECT  rls.sequence_name,rls.user_name,rls.score,rls.sequence_id
+from rush_level_score as rls
+) as t $condition order by t.score desc
+
+/*通过单位名称查询排行榜  英雄榜*/
+/*rush.rush.getRankByCompanyName*/
+SELECT
+	x.company_name,
+	SUM(x.score) as score,
+	x.rank
+FROM
+	(
+SELECT
+	@@rank := @@rank + 1 rank,
+	t.*
+FROM
+	( SELECT @@rank := 0 ) AS r,
+	( SELECT rls.sequence_name, rls.company_name, rls.real_name, rls.score, rls.company_id FROM rush_level_score AS rls ) AS t
+ORDER BY
+	t.score DESC
+	) x $condition GROUP BY company_id
+
+/*通过单位名称查询排行榜total*/
+/*rush.rush.getRankByCompanyName.total*/
+select count(1) as total from (SELECT DISTINCT(t.company_id) FROM rush_level_score t $condition) a
+
+
+
+/*查询个人在全部中排名*/
+/*rush.rush.getMyRank*/
+select  @@rank:=@@rank+1 rank,
+t.* from (SELECT @@rank:=0) as r,
+( SELECT  rls.sequence_name,rls.user_name,rls.score
+ from rush_level_score as rls
+ ) as t
+$condition  order by t.score desc
+
+/*查询题库名称*/
+/*rush.rush.getQuestions*/
+SELECT ques_questions.*,ques_classify.name as classifyName FROM ques_questions
+left join ques_classify  on ques_classify.id = ques_questions.classify_id
+ $condition
+
+ /*通过ID查询工种*/
+ /*rush.sequence.queryById*/
+ select rs.*, rsc.`tests_type`, qc.`name` as classify_name, rsc.`difficulty` from `rush_sequence` rs
+ left join `rush_sequence_classify` rsc on rsc.`sequence_id` = rs.`id`
+ left join `ques_classify` qc on qc.id = rsc.classify_id
+ $condition

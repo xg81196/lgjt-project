@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>lgjt.web</groupId>
+		<artifactId>lgjt-web-project</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>lgjt-web-backend</artifactId>
+	<name>lgjt-web-backend</name>
+	<version>${web.backend.version}-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>lgjt.services</groupId>
+			<artifactId>lgjt-services-backend</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<finalName>ROOT</finalName>
+	</build>
+</project>

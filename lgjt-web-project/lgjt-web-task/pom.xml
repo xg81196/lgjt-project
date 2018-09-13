@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>lgjt.web</groupId>
+    <artifactId>lgjt-web-project</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>lgjt-web-task</artifactId>
+  	<name>lgjt-web-task</name>
+	<version>${web.task.version}-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<dependencies>
+			<dependency>
+			<groupId>lgjt.services</groupId>
+			<artifactId>lgjt-services-task</artifactId>
+		</dependency>
+			<!-- 定时任务开启 -->
+		<dependency>
+			<groupId>org.nutz</groupId>
+			<artifactId>nutz-integration-quartz</artifactId>
+			<version>1.r.59</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+		<!-- 定时任务结束 -->
+	</dependencies>
+	<build>
+		<finalName>ROOT</finalName>
+	</build>
+</project>

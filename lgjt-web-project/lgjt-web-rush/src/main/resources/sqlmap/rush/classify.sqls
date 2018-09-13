@@ -1,0 +1,14 @@
+/*rush.classify.list*/
+select rgc.*,rg.name as gateName,qc.name as classifyName,qd.name as difficultyName from rush_gate_classify rgc left join rush_gate rg on rgc.gate_id=rg.id
+ left join ques_classify qc on rgc.classify_id=qc.id 
+left join ques_diff qd on rgc.difficulty=qd.id
+$condition
+
+/*闯关选择题库列表查询*/
+/*rush.adminGateClassify.queryWithRole*/
+SELECT qc3.* , qc2.name AS name2 ,  qc2.id AS id2 , qc1.name AS name1 ,  qc1.id AS id1 FROM ques_classify qc3
+LEFT JOIN ques_classify qc2
+ON qc3.super_id = qc2.id
+LEFT JOIN ques_classify qc1
+ON qc2.super_id = qc1.id
+$condition

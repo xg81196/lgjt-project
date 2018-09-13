@@ -1,0 +1,53 @@
+/*课程信息查询接口包含分类名称*/
+/*course.courseInfo.queryPageWithClassifyName*/
+select ci.* , sc1.name as classifyIdOneName , sc2.name as classifyIdTwoName , sc3.name as classifyIdThreeName , sa.source_file_path as fidFilePath from course_info ci 
+left join course_category sc1
+on sc1.id = ci.classify_id_one
+left join course_category sc2
+on sc2.id = ci.classify_id_two
+left join course_category sc3
+on sc3.id = ci.classify_id_three
+left join sys_attachment sa
+on ci.fid = sa.id
+$condition
+
+/*课程信息查询接口包含分类名称、平台、企业权限*/
+/*course.courseInfo.queryPageWithPingTai*/
+SELECT t.* FROM
+(
+SELECT ci.* , sc1.name AS classifyIdOneName , sc2.name AS classifyIdTwoName , sc3.name AS classifyIdThreeName FROM course_info ci 
+LEFT JOIN course_category sc1
+ON sc1.id = ci.classify_id_one
+LEFT JOIN course_category sc2
+ON sc2.id = ci.classify_id_two
+LEFT JOIN course_category sc3
+ON sc3.id = ci.classify_id_three
+WHERE (ci.course_owner_id =@course_owner_id or ci.course_owner_id IN ( @teacherId ))
+)AS t
+$condition
+
+/*前台课程信息查询接口包含分类名称包含数据权限包含客户端类型*/
+/*course.courseInfo.queryPageWithClassifyNameRoleType*/
+SELECT
+t.*
+FROM
+(
+SELECT
+t.*
+FROM
+(
+select ci.* ,
+sa.source_file_path as fidFilePath ,
+ sc1.name as classifyIdOneName ,
+ sc2.name as classifyIdTwoName ,
+ sc3.name as classifyIdThreeName from course_info ci 
+left join course_category sc1
+on sc1.id = ci.classify_id_one
+left join course_category sc2
+on sc2.id = ci.classify_id_two
+left join course_category sc3
+on sc3.id = ci.classify_id_three
+left join sys_attachment sa
+on ci.fid = sa.id
+) AS t
+$condition ) AS t @cri1

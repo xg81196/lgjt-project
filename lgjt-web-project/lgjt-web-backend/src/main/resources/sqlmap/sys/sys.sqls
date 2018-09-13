@@ -1,0 +1,6 @@
+/*test*/
+select * from sys_config
+ $condition
+/*test1*/
+select * from sys_config
+ $condition

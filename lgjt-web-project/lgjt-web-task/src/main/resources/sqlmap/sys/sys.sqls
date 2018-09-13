@@ -1,0 +1,29 @@
+/*test*/
+select * from sys_config
+ $condition
+/*test1*/
+select * from sys_config
+ $condition
+
+ /*获取企业下的员工数量*/
+ /*backend.org.human.count*/
+select a.id as org_id, sum(a.su) as human_count, a.name as org_name from ( select o.id, o.name, 1 as su from sys_user t, sys_organization o where t.org_id = o.id) a $condition GROUP BY a.id
+
+/*通过单位名称查询排行榜  英雄榜*/
+/*rush.rush.getRankByCompanyName*/
+SELECT
+	x.company_name,
+	SUM(x.score) as score,
+	x.rank,
+	x.company_id
+FROM
+	(
+SELECT
+	@@rank := @@rank + 1 rank,
+	t.*
+FROM
+	( SELECT @@rank := 0 ) AS r,
+	( SELECT rls.sequence_name, rls.company_name, rls.real_name, rls.score, rls.company_id FROM rush_level_score AS rls ) AS t
+ORDER BY
+	t.score DESC
+	) x $condition GROUP BY company_id

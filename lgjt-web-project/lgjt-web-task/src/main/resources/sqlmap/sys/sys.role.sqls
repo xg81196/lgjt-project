@@ -1,0 +1,6 @@
+/* 查询当前角色对应哪些用户 */
+/*sys.sysrole.queryRoleUser*/
+select ui.* from sys_user ui left join sys_user_role urm on ui.id=urm.user_id $condition
+/* 查询当前用户所属角色 */
+/*sys.sysrole.queryUserRole*/
+select r.role_code,r.role_name,r.role_status from sys_role r join sys_user_role su  on r.id=su.role_id and su.user_id=@userId $condition

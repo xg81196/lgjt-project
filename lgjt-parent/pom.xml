@@ -1,0 +1,481 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>lgjt</groupId>
+        <artifactId>lgjt-project</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <name>lgjt-parent</name>
+    <artifactId>lgjt-parent</artifactId>
+    <packaging>pom</packaging>
+
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- web.books -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-books</artifactId>
+                <version>${books.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-books</artifactId>
+                <version>${books.version}-SNAPSHOT</version>
+            </dependency>
+
+            <!-- web.news -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-news</artifactId>
+                <version>${news.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-news</artifactId>
+                <version>${news.version}-SNAPSHOT</version>
+            </dependency>
+
+            <!-- web.notice -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-notice</artifactId>
+                <version>${notice.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-notice</artifactId>
+                <version>${notice.version}-SNAPSHOT</version>
+            </dependency>
+
+
+            <!-- web.help -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-help</artifactId>
+                <version>${help.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-help</artifactId>
+                <version>${help.version}-SNAPSHOT</version>
+            </dependency>
+
+            <!-- web.moments -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-moments</artifactId>
+                <version>${moments.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-moments</artifactId>
+                <version>${moments.version}-SNAPSHOT</version>
+            </dependency>
+
+            <!-- web.resource -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-resource</artifactId>
+                <version>${resource.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-resource</artifactId>
+                <version>${resource.version}-SNAPSHOT</version>
+            </dependency>
+
+            <!-- web.report -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-report</artifactId>
+                <version>${report.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-report</artifactId>
+                <version>${report.version}-SNAPSHOT</version>
+            </dependency>
+
+
+            <!-- common-->
+            <dependency>
+                <groupId>lgjt.common</groupId>
+                <artifactId>lgjt-common-base</artifactId>
+                <version>${common.version}-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>lgjt.common</groupId>
+                <artifactId>lgjt-common-sms</artifactId>
+                <version>${common.sms.version}-SNAPSHOT</version>
+            </dependency>
+
+
+            <!-- web.api -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-api</artifactId>
+                <version>${api.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-api</artifactId>
+                <version>${api.version}-SNAPSHOT</version>
+            </dependency>
+
+            <!-- web.app -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-app</artifactId>
+                <version>${app.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-app</artifactId>
+                <version>${app.version}-SNAPSHOT</version>
+            </dependency>
+
+            <!-- web.backend -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-backend</artifactId>
+                <version>${backend.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-backend</artifactId>
+                <version>${backend.version}-SNAPSHOT</version>
+            </dependency>
+
+            <!-- web.task -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-task</artifactId>
+                <version>${task.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-task</artifactId>
+                <version>${task.version}-SNAPSHOT</version>
+            </dependency>
+            <!-- mongodb.services -->
+            <dependency>
+                <groupId>lgjt.domain</groupId>
+                <artifactId>lgjt-domain-mongodb</artifactId>
+                <version>${mongodb.version}-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>lgjt.services</groupId>
+                <artifactId>lgjt-services-mongodb</artifactId>
+                <version>${mongodb.version}-SNAPSHOT</version>
+            </dependency>
+            <!--公司私服-->
+            <dependency>
+                <groupId>com.ttsx.platform</groupId>
+                <artifactId>CCP_REST_SDK_JAVA</artifactId>
+                <version>2.6r</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.11</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>${mongo.java.driver.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+
+
+            </dependency>
+
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${beanutils.version}</version>
+            </dependency>
+            <!--拼音-->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>2.5.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.16.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.microsoft.sqlserver</groupId>
+                <artifactId>mssql-jdbc</artifactId>
+                <version>7.0.0.jre8</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <!--  打包校验插件 -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.12.4</version>
+                        <configuration>
+                            <forkMode>once</forkMode>
+                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                            <!--       是否跳过校验-->
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <env>test</env>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <!-- 打包校验插件 -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.12.4</version>
+                        <configuration>
+                            <forkMode>once</forkMode>
+                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                            <!--    是否跳过校验 -->
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>51dev</id>
+            <properties>
+                <env>51dev</env>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <!-- 打包校验插件 -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.12.4</version>
+                        <configuration>
+                            <forkMode>once</forkMode>
+                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                            <!--    是否跳过校验 -->
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>pro</id>
+            <properties>
+                <env>pro</env>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <!--    打包校验插件 -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.12.4</version>
+                        <configuration>
+                            <forkMode>once</forkMode>
+                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                            <!--     是否跳过校验 -->
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <showWarnings>true</showWarnings>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <!-- 源代码打包插件 -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.4</version>
+                    <configuration>
+                        <attach>true</attach>
+                        <!--<encoding>UTF-8</encoding> -->
+                        <outputDirectory>${project.build.directory}</outputDirectory>
+                        <attach>true</attach>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>post-integration-test</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <!-- 帮助文档打包插件 -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.10.3</version>
+                    <executions>
+                        <execution>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <linksource>false</linksource>
+                        <maxmemory>512m</maxmemory>
+                        <quiet>true</quiet>
+                        <verbose>false</verbose>
+                        <charset>UTF-8</charset>
+                        <encoding>UTF-8</encoding>
+                        <docencoding>UTF-8</docencoding>
+                        <outputDirectory>target\javadoc</outputDirectory>
+                        <reportOutputDirectory>target\javadoc</reportOutputDirectory>
+                        <groups>
+                            <group>
+                                <title>${project.name} API</title>
+                                <packages>com.dmkj*</packages>
+                            </group>
+                        </groups>
+                        <useStandardDocletOptions>true</useStandardDocletOptions>
+                        <includeDependencySources>false</includeDependencySources>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <!-- 发布依赖包插件 -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.8</version>
+                    <configuration>
+                        <outputDirectory>${project.build.directory}/libs</outputDirectory>
+                        <overWriteReleases>false</overWriteReleases>
+                        <overWriteSnapshots>false</overWriteSnapshots>
+                        <overWriteIfNewer>true</overWriteIfNewer>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+            <!--<version>2.9.1</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>attach-javadocs</id>-->
+            <!--<phase>install</phase>-->
+            <!--<goals>-->
+            <!--<goal>jar</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<encoding>UTF-8</encoding>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<encoding>UTF-8</encoding>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+
+    </build>
+</project>

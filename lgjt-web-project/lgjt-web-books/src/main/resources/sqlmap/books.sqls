@@ -1,0 +1,8 @@
+/*后台查询列表*/
+/*admin.book.list*/
+SELECT lli.*, llc.cate_name as book_category_name FROM lg_letter_info lli
+left JOIN lg_letter_category llc on llc.id = lli.book_category_id $condition
+
+/*刷新点赞数*/
+/*lgjt.wbe.books.queryLikeCount*/
+SELECT COUNT(1) as countlike  FROM lg_user_like

@@ -1,0 +1,24 @@
+/*按照新闻类型查询新闻 首页小窗口和新闻列表页面新闻信息*/
+/*lgjt.news.queryListForNewsType4*/
+SELECT  * FROM dbo.KS_U_XuanChuan  $condition
+
+
+/*按照新闻类型查询新闻  新闻列表页面新闻信息*/
+/*lgjt.news.queryListForNewsType*/
+SELECT  top 100 *  FROM dbo.KS_U_XuanChuan  $condition
+
+
+/*查询首页小窗口新闻类型和新闻列表头部类型*/
+/*lgjt.news.queryHomePageWindoNewsType*/
+SELECT  ClassID , ClassName FROM KS_Class WHERE Channelid = 6
+
+
+/*查询首页轮播图*/
+/*lgjt.news.homePageChart*/
+select * from  dbo.KS_U_XuanChuan where substring( Attribute ,6,1)='1'
+and
+ClassID=1330
+and
+DelTF!=1
+ORDER BY  AddDate desc
+

@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>lgjt.web</groupId>
+		<artifactId>lgjt-web-project</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>lgjt-web-app</artifactId>
+	<name>lgjt-web-app</name>
+	<version>${web.app.version}-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>lgjt.services</groupId>
+			<artifactId>lgjt-services-app</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<!--短信服务 -->
+		<dependency>
+			<groupId>lgjt.common</groupId>
+			<artifactId>lgjt-common-sms</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.belerweb</groupId>
+			<artifactId>pinyin4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope><!-- 非常重要哦 -->
+		</dependency>
+    </dependencies>
+
+	<build>
+		<finalName>ROOT</finalName>
+	</build>
+</project>

@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>lgjt.web</groupId>
+		<artifactId>lgjt-web-project</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<name>lgjt-web-api</name>
+	<artifactId>lgjt-web-api</artifactId>
+	<version>${web.api.version}-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>lgjt.services</groupId>
+			<artifactId>lgjt-services-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>lgjt.services</groupId>
+			<artifactId>lgjt-services-mongodb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>ROOT</finalName>
+	</build>
+</project>

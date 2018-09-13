@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>lgjt</groupId>
+        <artifactId>lgjt-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../lgjt-parent</relativePath>
+    </parent>
+    <groupId>lgjt.web</groupId>
+    <artifactId>lgjt-web-project</artifactId>
+    <name>lgjt-web-project</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>lgjt-web-app</module>
+        <module>lgjt-web-backend</module>
+        <module>lgjt-web-api</module>
+        <module>lgjt-web-task</module>
+        <module>lgjt-web-resource</module>
+        <module>lgjt-web-rush</module>
+        <module>lgjt-web-moments</module>
+        <module>lgjt-web-help</module>
+        <module>lgjt-web-news</module>
+        <module>lgjt-web-books</module>
+        <module>lgjt-web-report</module>
+    </modules>
+    <build>
+        <filters>
+            <filter>../../filters/filter-${env}.properties</filter>
+        </filters>
+    </build>
+</project>

@@ -1,0 +1,13 @@
+/*查询所有的部门*/
+/*sys.sysdepartment.querypage.all*/
+select * from sys_department
+/*查询所有的组织机构*/
+/*sys.org.queryPage*/
+select o.id,o.`name`,o.org_code,o.identifier_code,(select d.name from sys_dict d where d.parent_id='jingji' and d.code=o.economic_type) economic_name,economic_type,o.unit_property_category,o.super_id,
+o.ind_id,o.union_leader_phone,o.`status`,o.union_leader,o.logo_url,o.banner_url,o.introduce,o.address,o.type,o.extend1,o.extend2,o.extend3 from sys_organization o  $condition
+/*sys.union.queryPage*/
+select o.id,o.`name`,o.address,o.unit_scope,o.super_id,o.union_type,
+o.ind_id,o.union_leader_phone,o.`status`,o.union_leader,o.creation_date,o.logo_url,o.banner_url,o.introduce from sys_union o  $condition
+
+/*sys.department.getUserData*/
+SELECT so.*,so.NAME AS name FROM sys_organization so left join sys_user_data sud on sud.object_id=so.id WHERE sud.object_type=0 and  so.status=0 and sud.admin_user_id=@userId

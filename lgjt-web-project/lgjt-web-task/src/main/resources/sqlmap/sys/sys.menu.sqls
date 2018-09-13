@@ -1,0 +1,5 @@
+/* 查询当前用户的所属角色对应的权限 */
+/*sys.sysmenu.queryUserMenuTreeByUser*/
+select sr.* from sys_menu sr where id in 
+ (select menu_ids from sys_role_menu where role_id in
+ ( select role_id from sys_user_role where  user_id=@userId )) 

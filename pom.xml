@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>lgjt</groupId>
+	<artifactId>lgjt-project</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+		<name>lgjt-project</name>
+	<modules>
+		<module>lgjt-parent</module>
+		<module>lgjt-web-project</module>
+		<module>lgjt-services-project</module>
+		<module>lgjt-common-project</module>
+		<module>lgjt-domain-project</module>
+	</modules>
+	<properties>
+		<jdk.version>1.8</jdk.version>
+		<project.sourceEncoding>utf-8</project.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<!-- web声明 -->	
+		<web.api.version>1.0.1</web.api.version>
+		<web.backend.version>1.0.0</web.backend.version>
+		<web.app.version>1.0.1</web.app.version>
+		<web.log.version>1.0.0</web.log.version>
+		<web.task.version>1.0.0</web.task.version>
+		<web.resource.version>1.0.0</web.resource.version>
+
+		<web.moments.version>1.0.0</web.moments.version>
+		<web.help.version>1.0.0</web.help.version>
+		<web.news.version>1.0.0</web.news.version>
+		<web.books.version>1.0.0</web.books.version>
+        <web.report.version>1.0.0</web.report.version>
+
+		<!-- service、lib、common声明 -->
+
+		<api.version>1.0.0</api.version>
+		<backend.version>1.0.0</backend.version>
+		<app.version>1.0.0</app.version>
+		<log.version>1.0.0</log.version>
+		<task.version>1.0.0</task.version>
+		<mongodb.version>1.0.0</mongodb.version>
+		<common.version>1.0.0</common.version>
+		<common.sms.version>1.0.0</common.sms.version>
+		<resource.version>1.0.0</resource.version>
+		<moments.version>1.0.0</moments.version>
+		<help.version>1.0.0</help.version>
+		<news.version>1.0.0</news.version>
+		<books.version>1.0.0</books.version>
+		<report.version>1.0.0</report.version>
+		<!-- 第三方包版本声明 -->
+		<mongo.java.driver.version>3.5.0</mongo.java.driver.version>
+		<fastjson.version>1.2.47</fastjson.version>
+		<beanutils.version>1.9.3</beanutils.version>
+	</properties>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,59 @@
+
+/*分页查询消息列表*/
+/*lgjt.web.notice.queryPageLgNoticeMessageList*/
+select  title,target,message_type,content,send_date,crt_user
+ from  lg_notice_message ORDER BY send_date  limit  @index,@Number;
+
+
+/*查询所有用户*/
+/*lgjt.web.notice.querySysUserList*/
+SELECT  *  from lg_sys_user
+$condition
+
+
+/*按用户名查询查询用户企业信息*/
+/*sys.user.queryUserAndOrgInfoForUser*/
+SELECT
+sysuser.id as userid,
+sysuser.user_name userName,
+sysuser.real_name realName,
+org.name name,
+sysuser.status status
+FROM  sys_user sysuser,sys_organization org
+$condition
+and org.id=sysuser.org_id
+
+
+
+
+/*查询用户企业信息*/
+/*sys.user.queryUserAndOrgInfo*/
+SELECT
+sysuser.id as userid,
+sysuser.user_name userName,
+sysuser.real_name realName,
+org.name name,
+sysuser.status status
+FROM  sys_user sysuser,sys_organization org
+where
+org.id=sysuser.org_id
+
+
+/*管理员查询用户读取信息状态*/
+/*lgjt.web.app.queryPageForStatusIsRead*/
+SELECT  m.title,m.content,r.*  FROM lg_notice_receive r ,lg_notice_message m
+WHERE
+r.message_id=m.id
+
+
+/*管理员查询用户读取信息状态 按照用户名搜索*/
+/*lgjt.web.app.queryPageForStatusIsReadToUserName*/
+SELECT  m.title,m.content,r.*  FROM lg_notice_receive r ,lg_notice_message m
+$condition
+and
+r.message_id=m.id
+
+
+
+
+

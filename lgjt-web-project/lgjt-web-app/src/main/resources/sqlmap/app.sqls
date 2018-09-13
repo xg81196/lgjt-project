@@ -1,0 +1,11 @@
+/*group.query.userid*/
+SELECT * FROM lg_group lg WHERE lg.id = (SELECT lsu.group_id FROM sys_user lsu $condition)
+
+
+/*查询用户信息*/
+/*get.login.userinfo*/
+select su.*, so.name as org_name, lg.group_name
+from sys_user su
+LEFT JOIN sys_organization so on so.id = su.org_id
+LEFT JOIN lg_group lg on lg.id = su.group_id
+$condition

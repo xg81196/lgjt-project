@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>lgjt.common</groupId>
+    <artifactId>lgjt-common-project</artifactId>
+    <version>1.0.0</version>
+   </parent>
+ 		<artifactId>lgjt-common-sms</artifactId>
+		<name>lgjt-common-sms</name>
+		<version>${common.sms.version}-SNAPSHOT</version>
+    <dependencies>
+        <!--短信包-->
+        <dependency>
+            <groupId>com.ttsx.platform</groupId>
+            <artifactId>CCP_REST_SDK_JAVA</artifactId>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,3 @@
+/*查询用户和部门*/
+/*sys.user.queryPageDept*/
+select u.id,u.user_name,u.user_realname,d.id as deptId,d.parent_id,d.dept_name from sys_user u join sys_department d on u.user_dept_id=d.id $condition

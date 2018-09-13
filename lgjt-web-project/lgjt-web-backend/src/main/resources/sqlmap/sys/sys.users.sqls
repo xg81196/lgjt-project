@@ -1,0 +1,25 @@
+/*查询用户和部门*/
+/*sys.user.queryPageDept*/
+select u.id,u.user_name,u.user_realname,d.id as deptId,d.parent_id,d.dept_name from sys_user u join sys_department d on u.user_dept_id=d.id $condition
+/*查询用户数据权限*/
+/*sys.user.queryDataAuth*/
+select u.* from sys_user u LEFT JOIN sys_user_data user_data on user_data.object_id=u.org_id  $condition
+/*查询用户数据*/
+/*sys.users.queryPageUsers*/
+select u.user_name,u.real_name,u.`status`,u.sex,u.phone_number,u.email,
+(select o.`name` from sys_organization o where u.org_id=o.id and o.type=2 )  org_name,
+(select o.`name` from sys_organization o where u.com_id=o.id and o.type=0 )  com_name,
+(select o.`name` from sys_organization o where u.union_id=o.id and o.type=1 )  union_name
+ from sys_user u where ((u.org_id in (select object_id from sys_user_data where admin_user_id='1'))
+ or ( u.com_id in (select object_id from sys_user_data where admin_user_id='1'))
+ or ( u.union_id in (select object_id from sys_user_data where admin_user_id='1'))) and (u.org_id='1')
+
+
+
+ /*整理用户查询SQL SERVER下*/
+/*get.ksadmin.sql*/
+SELECT
+	ka.id ,ka.UserName,ka.RealName,ka.PassWord, ka.Tel, ku.DepartId, ka.Salt, ku.IsClass, ku.ParentID
+FROM
+	dbo.KS_UserDepartment AS ku
+	INNER JOIN dbo.KS_Admin AS ka ON ku.DepartID = ka.PrUserName

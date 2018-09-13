@@ -1,0 +1,52 @@
+/*sys.admin.getUserMenu*/
+SELECT sr.*,sr.MENU_NAME AS name FROM sys_menu sr WHERE ID IN (SELECT MENU_ID FROM sys_role_menu WHERE ROLE_ID IN ( SELECT sur.role_id FROM sys_user_role sur join sys_role sro on
+ sur.role_id=sro.id WHERE  sur.user_name =@username and sro.status=0) )
+ $condition
+/*sys.admin.getTopMenu*/
+SELECT sr.*,sr.MENU_NAME AS name FROM sys_menu sr $condition
+/*sys.admin.roleUsers*/
+select ui.* from sys_user ui left join sys_user_role urm on ui.name=urm.user_name $condition
+/*sys.admin.userlist*/
+select ui.*,so.`name` as orgName from sys_user ui left join  sys_organization so on ui.org_id=so.id
+ $condition
+/*sys.company.recommended*/
+SELECT * from sys_company 
+ $condition ORDER BY convert(comp_name using gbk) ASC
+ /*sys.admin.queryPage*/
+SELECT ua.id,ua.real_name,ua.STATUS,ua.sex,ua.phone_number,ua.email,ua.id_no,ua.user_name,ua.extend1,
+ua.extend4 as role_id, r.`role_name` as role_name from sys_user_admin ua
+left join sys_user_role sur on sur.`admin_user_id` = ua.id
+left join sys_role r on r.id = sur.`role_id` $condition
+
+ /*SELECT ua.id,ua.real_name,ua.STATUS,ua.sex,ua.phone_number,ua.email,ua.id_no,ua.user_name,ua.extend1,
+    (select r.role_name from sys_user_role ur LEFT JOIN sys_role r on ur.role_id=r.id where ur.admin_user_id=ua.id) as
+     role_name,(select group_concat(o.`name` SEPARATOR ' ') from sys_user_data d LEFT JOIN sys_organization o ON d.object_id = o.id where d.admin_user_id = ua.id
+  ) as  org_name,(select group_concat(o.`name` SEPARATOR ' ') from sys_user_data d LEFT JOIN sys_union o ON d.object_id = o.id where d.admin_user_id = ua.id) as  union_name
+  FROM sys_user_admin ua  $condition GROUP BY ua.id*/
+
+/* SELECT ua.id,ua.real_name,ua.status,ua.sex,ua.phone_number,ua.email,o.id as org_id,ua.id_no,ua.user_name,ua.extend1,
+ group_concat(o.`name` separator ' ') as org_name
+ FROM sys_user_admin ua left join sys_user_data d on d.admin_user_id=ua.id
+  left join sys_organization o on d.object_id=o.id $condition
+  GROUP BY ua.id */
+
+  /*sys.admin.getUserRoleMenuByUserId*/
+  SELECT m.id,r.id as role_id, m.id as menu_id,m.menu_code,m.menu_name FROM sys_menu m
+  		LEFT JOIN sys_role_menu rm ON rm.menu_id = m.id
+  		LEFT JOIN sys_role r ON r.id = rm.role_id
+  		LEFT JOIN sys_user_role ur ON ur.role_id = r.id
+  		LEFT JOIN sys_user_admin u ON u.id = ur.admin_user_id  $condition
+
+   /*sys.admin.queryAdminPageByOrgId*/
+    SELECT ua.id,ua.real_name,ua.status,ua.sex,ua.phone_number,ua.email,ua.id_no,ua.user_name,
+    ua.extend4 as role_id,
+    (select r.role_name from  sys_role r where r.id=ua.extend4) as role_name
+         FROM sys_user_admin ua LEFT JOIN sys_user_data d on d.admin_user_id=ua.id  $condition
+
+
+/*从SQL获取班组长*/
+/*get.group.admin.sql*/
+select  a.*,d.DepartMentName from KS_Admin a,KS_UserDepartment d where a.Descript=66  and a.PrUserName=d.DepartID and d.IsClass != 0
+
+
+
